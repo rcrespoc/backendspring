@@ -16,4 +16,5 @@ public interface DetailProductService {
   List<Product> getSimilarIds(int id);
   Product getProduct(int id);
   List<Product> getProductList(List<Integer> ids);
+  
 }

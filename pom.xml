@@ -39,11 +39,10 @@
 			<scope>test</scope>
 		</dependency>
 	 <dependency>
-	  <groupId>org.json</groupId>
-	  <artifactId>json</artifactId>
-	  <version>20171018</version>
-	  <type>jar</type>
-	 </dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.3.4</version>
+    </dependency>
 	</dependencies>
 
 	<build>
