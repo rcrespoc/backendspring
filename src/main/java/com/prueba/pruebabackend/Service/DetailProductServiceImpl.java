@@ -56,7 +56,7 @@ public class DetailProductServiceImpl implements DetailProductService {
     try {
       product = restClient.getForObject("http://localhost:3001/product/{id}", Product.class, variables);
     } catch (Exception e) {
-      e.printStackTrace();
+      log.info("Product not found.");
     }
 
     return product;
@@ -73,28 +73,24 @@ public class DetailProductServiceImpl implements DetailProductService {
     CompletableFuture.allOf(id1, id2, id3).join();
 
     try {
+      
       Product p = id1.get();
+      Product p2 = id2.get();
+      Product p3 = id3.get();
+      
       if(p.getId() != null){
         products.add(p);
       }
-    } catch (InterruptedException | ExecutionException ex) {
-      ex.printStackTrace();
-    }
-    try {
-      Product p = id2.get();
-      if(p.getId() != null){
-        products.add(p);
+      if(p2.getId() != null){
+        products.add(p2);
+      }
+      if(p3.getId() != null){
+        products.add(p3);
       }
     } catch (InterruptedException | ExecutionException ex) {
-      ex.printStackTrace();
-    }
-    try {
-      Product p = id3.get();
-      if(p.getId() != null){
-        products.add(p);
-      }
-    } catch (InterruptedException | ExecutionException ex) {
-      ex.printStackTrace();
+      
+      log.info("Ha habido un error.");
+      
     }
 
     return products;
